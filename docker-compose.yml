@@ -26,3 +26,19 @@ services:
     environment:
       - ROS_DOMAIN_ID=42
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+  tortoisebot-ros2-rviz-real:
+    image: gokhulraj/gokhulraj-cp22:tortoisebot-ros2-rviz-real
+    container_name: tortoisebot-ros2-rviz-real
+    privileged: true
+    volumes:
+      - /dev/mem:/dev/mem
+      - /dev/vchiq:/dev/vchiq
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/dri:/dev/dri
+      - $HOME/.Xauthority:/root/.Xauthority
+    network_mode: "host"
+    environment:
+      - DISPLAY
+      - ROS_DOMAIN_ID=42
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
